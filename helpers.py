@@ -24,10 +24,3 @@ class CreateUserData:
         }
 
         return payload
-
-
-class AuthData:
-    def get_sign_in_data(self):
-        email = 'testkate@mailinator.com'
-        password = '123456'
-        return email, password

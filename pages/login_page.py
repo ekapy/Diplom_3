@@ -10,11 +10,12 @@ class LoginPage(BasePage):
 
     def auth(self, user_registration):
         self.navigate(LOGIN_PAGE_URL)
-        email_data = user_registration["email"]
-        password_data = user_registration["password"]
+        email_data = user_registration[0]["email"]
+        password_data = user_registration[0]["password"]
         self.enter_text(LoginPageLocators.EMAIL_AUTH_FIELD, email_data)
         self.enter_text(LoginPageLocators.PASSWORD_AUTH_FIELD, password_data)
         self.wait_and_click_element(LoginPageLocators.SIGN_IN_BUTTON)
+        return email_data, password_data
 
     @allure.step('Ожидание кнопки Войти - проверка, что страница Авторизации')
     def page_is_login(self):

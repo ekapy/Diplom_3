@@ -1,6 +1,5 @@
 import allure
 from pages.main_page import MainPage
-from pages.login_page import LoginPage
 from data import BASE_URL, ORDER_FEED_URL
 
 
@@ -41,11 +40,9 @@ class TestMainPage:
         assert count_before < count_after
 
     @allure.title('Залогиненый пользователь может создать заказ')
-    def test_auth_user_create_order(self, driver, user_registration):
-        login_page = LoginPage(driver)
+    def test_auth_user_create_order(self, driver, user_auth):
         main_page = MainPage(driver)
-        main_page.click_profile_button()
-        login_page.auth(user_registration)
+        main_page.click_constructor_button()
         main_page.add_ingredient()
         main_page.click_order_button()
         assert main_page.modal_window_is_visible() is True
